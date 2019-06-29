@@ -8,6 +8,9 @@
     "ts-node": "^8.3.0",
     "typescript": "^3.5.2"
   },
+  "scripts": {
+    "start": "nodemon --exec ts-node src/index"
+  },
   "dependencies": {
     "apollo-server": "^2.6.4",
     "graphql": "^14.3.1",
