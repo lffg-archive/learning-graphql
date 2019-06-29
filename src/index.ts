@@ -27,7 +27,7 @@ const typeDefs = gql`
 
   type Mutation {
     createUser(name: String!, username: String!, age: Int): User!
-    deleteUser(id: Int!): Boolean
+    deleteUser(id: Int!): Boolean!
   }
 `;
 
@@ -44,6 +44,7 @@ const resolvers = {
     },
     deleteUser: (_: any, args: { id: number }) => {
       db.delete(({ id }) => id !== args.id);
+      return true;
     }
   }
 };
