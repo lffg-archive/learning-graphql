@@ -9,7 +9,7 @@
     "typescript": "^3.5.2"
   },
   "scripts": {
-    "start": "nodemon --exec ts-node src/index"
+    "start": "nodemon -e js,jsx,ts,tsx --exec ts-node src/index"
   },
   "dependencies": {
     "apollo-server": "^2.6.4",
