@@ -15,12 +15,9 @@ export default class Database<T> {
     return this.databaseEntries.filter(filterFn);
   }
 
-  public insert(data: T | T[]) {
-    if (!Array.isArray(data)) {
-      data = [data];
-    }
-
-    data.forEach((data) => this.databaseEntries.push(data));
+  public insert(entry: T) {
+    this.databaseEntries.push(entry);
+    return entry;
   }
 
   public delete(filterFn: FilterFn<T>) {
