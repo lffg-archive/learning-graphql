@@ -1,0 +1,57 @@
+{
+  "include": ["src"],
+  "exclude": ["**/node_modules", "**/__ignore__*", "**/__old__*"],
+  "compilerOptions": {
+    //
+    // Important options:
+    //
+    "outDir": "build",
+
+    //
+    // Module options:
+    //
+    "target": "es2017",
+    "module": "commonjs",
+    "moduleResolution": "node",
+
+    "lib": ["dom", "es2018", "esnext.asynciterable"],
+
+    //
+    // General options:
+    //
+    "allowJs": false,
+    "jsx": "preserve",
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": false,
+    "removeComments": true,
+    "noEmit": false,
+
+    //
+    // Strict options:
+    //
+    "strict": true,
+    "alwaysStrict": true,
+
+    //
+    // Code checks:
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+
+    //
+    // Path options:
+    //
+    "baseUrl": "./",
+    "paths": {},
+
+    //
+    // Extra options:
+    //
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  }
+}
