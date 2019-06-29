@@ -1,4 +1,5 @@
 import { ApolloServer, gql } from 'apollo-server';
+import Database from './utils/db';
 
 interface User {
   id: number;
@@ -7,9 +8,9 @@ interface User {
   age?: number;
 }
 
-let DATABASE: User[] = [
-  { id: 1, name: 'Luiz Felipe', username: 'lffg', age: 16 }
-];
+const db = new Database<User>([
+  { id: 0, name: 'Luiz Felipe', username: 'lffg', age: 16 }
+]);
 
 const typeDefs = gql`
   type User {
@@ -26,27 +27,23 @@ const typeDefs = gql`
 
   type Mutation {
     createUser(name: String!, username: String!, age: Int): User!
-    deleteUser(id: Int!): User
+    deleteUser(id: Int!): Boolean
   }
 `;
 
 const resolvers = {
   Query: {
     user: (_: any, args: { id: number }) => {
-      return DATABASE.find(({ id }) => id === args.id);
+      return db.select(({ id }) => id === args.id);
     },
-    users: () => DATABASE
+    users: () => db.entries
   },
   Mutation: {
     createUser: (_: any, args: User) => {
-      const user = { ...args, id: DATABASE.length + 1 };
-      DATABASE.push(user);
-      return user;
+      return db.insert({ ...args, id: db.entries.length });
     },
     deleteUser: (_: any, args: { id: number }) => {
-      const user = DATABASE.find(({ id }) => id === args.id);
-      DATABASE = DATABASE.filter(({ id }) => id !== args.id);
-      return user;
+      db.delete(({ id }) => id !== args.id);
     }
   }
 };
