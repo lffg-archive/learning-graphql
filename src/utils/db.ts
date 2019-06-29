@@ -3,6 +3,10 @@ type FilterFn<T> = (value: T, index: number, array: T[]) => boolean;
 export default class Database<T> {
   private databaseEntries: T[] = [];
 
+  constructor(initialData: T[]) {
+    this.databaseEntries = initialData;
+  }
+
   public get entries() {
     return this.databaseEntries;
   }
