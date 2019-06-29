@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@lffg/graphql-learning-day",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
